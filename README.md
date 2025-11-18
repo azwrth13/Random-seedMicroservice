@@ -68,14 +68,12 @@ timestamp | string (ISO 8601) | UTC time when the seed was generated
 sequenceDiagram
     actor U as User
     participant C as Client App
-    participant S as Random Seed Microservice
+    participant S as Seed Service
 
-    U->>C: Run test / click "Pick a Random Game"
+    U->>C: Click "Pick a Random Game"
     C->>S: GET /api/random-seed
-    activate S
-    S->>S: Generate random seed
     S-->>C: 200 OK { seed, timestamp }
-    deactivate S
-    C->>C: Validate response and use seed
-    C-->>U: Show selected game / log seed
+    C->>C: Use seed to pick game
+    C-->>U: Show selected game
+
 ```
