@@ -6,6 +6,8 @@ const cors = require('cors');
 const app = express();
 app.use(cors());
 
+// Suggest to write a comment about the purpose of the microservice
+
 // Health check (optional)
 app.get('/', (req, res) => {
   res.json({ status: 'ok', service: 'random-seed' });
@@ -23,6 +25,8 @@ app.get('/api/random-seed', (req, res) => {
   });
 });
 
+
+// Suggest to make the port not hardcoded
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Seed service running on port ${PORT}`);
